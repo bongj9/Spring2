@@ -21,7 +21,7 @@ public class MemberRepository {
     }
 
     public Member save(Member member) {
-        member.setId(++sequence);
+        member.setId(++sequence); //Id를 넣어줌
         store.put(member.getId(), member);
         return member;
 
