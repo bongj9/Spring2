@@ -3,7 +3,7 @@
 
 <%@ page contentType="text/html; charset = UTF-8" language="java" %>
 <%
-    MemberRepository memberRepository = MemberRepository.getInstance()
+    MemberRepository memberRepository = MemberRepository.getInstance();
     System.out.println("MemberSaveServlet.service");
     String username = request.getParameter("username"); //파라미터의 반환값은 할상 문자열
     int age = Integer.parseInt(request.getParameter("age")); //정수로 바꿔줬
