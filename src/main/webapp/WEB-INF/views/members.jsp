@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %> //java로 쓸려면 무조건 써야한다
+<%@ page contentType="text/html;charset=UTF-8" language="java" %> <%--//java로 쓸려면 무조건 써야한다--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
@@ -14,7 +14,7 @@
     <th>age</th>
     </thead>
     <tbody>
-    <c:forEach var = "item"items="${members}">
+    <c:forEach var = "item" items="${members}">
         <tr>
             <td>${item.id}</td>
             <td>${item.username}</td>
