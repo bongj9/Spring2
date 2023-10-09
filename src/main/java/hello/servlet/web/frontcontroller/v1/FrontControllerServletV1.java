@@ -26,6 +26,13 @@ public class FrontControllerServletV1 extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("FrontControllerServletV1.service");
-
+        /*"/front-controller/v1/members" 키를넣으면 MemberListControllerV1여기에 들어간다*/
+        String requestURL = request.getRequestURI();
+        ControllerV1 controller = controllerMap.get(requestURL);
+        if (controller == null){
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        } //다형성에 의해서 인스턴스로 받을 수 있다.
+        controller.process(request,response);
     }
 }
