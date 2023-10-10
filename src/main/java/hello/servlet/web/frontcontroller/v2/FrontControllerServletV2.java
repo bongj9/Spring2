@@ -1,5 +1,6 @@
 package hello.servlet.web.frontcontroller.v2;
 
+import hello.servlet.web.frontcontroller.MyView;
 import hello.servlet.web.frontcontroller.v2.controller.MemberFormControllerV2;
 import hello.servlet.web.frontcontroller.v2.controller.MemberListControllerV2;
 import hello.servlet.web.frontcontroller.v2.controller.MemberSaveControllerV2;
@@ -25,7 +26,6 @@ public class FrontControllerServletV2 extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("FrontControllerServletV1.service");
         /*"/front-controller/v1/members" 키를넣으면 MemberListControllerV1여기에 들어간다*/
         String requestURL = request.getRequestURI();
         ControllerV2 controller = controllerMap.get(requestURL);
@@ -33,6 +33,7 @@ public class FrontControllerServletV2 extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         } //다형성에 의해서 인스턴스로 받을 수 있다.
-        controller.process(request,response);
+        MyView view = controller.process(request, response);
+        view.render(request,response);
     }
 }
