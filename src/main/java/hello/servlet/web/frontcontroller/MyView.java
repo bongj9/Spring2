@@ -30,3 +30,4 @@ public class MyView {
         model.forEach((key, value) -> request.setAttribute(key,value)); //변수 key,value로해서 맵에 있는 루프를 다돌리는 역할
     }
 }
+//view리졸버
