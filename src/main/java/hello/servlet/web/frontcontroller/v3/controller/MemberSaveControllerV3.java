@@ -14,7 +14,7 @@ public class MemberSaveControllerV3 implements ControllerV3 {
 
     @Override
     public ModelView process(Map<String, String> paramMap) {
-        String username = paramMap.get("username:");
+        String username = paramMap.get("username"); //static은 문제가아니라 string을 받아야하는데 :가 있어서 입력이 안됐다
         int age = Integer.parseInt(paramMap.get("age"));
 
         Member member = new Member(username, age);
