@@ -51,7 +51,10 @@ public class FrontControllerServletV5 extends HttpServlet {
         MyView view = viewResolver(mv.getViewName());
         view.render(mv.getModel(),request,response);
     }
-
+    private Object getHandler(HttpServletRequest request) {
+        String requestURL = request.getRequestURI();
+        return handlerMappingMap.get(requestURL);
+    }
     private  MyHandlerAdapter getHandlerAdapter(Object handler) {
         for (MyHandlerAdapter adapter : handlerAdapters) { //반복루프를 이용해 어뎁터를 찾아야한다. iter을 입력하면 for eacha문으로 쉽게 만들 수 있다.
             if (adapter.supports(handler)) {
@@ -62,10 +65,6 @@ public class FrontControllerServletV5 extends HttpServlet {
         throw new IllegalArgumentException("handler adapter를 찾을 수 없습니다. handler :" +handler);
     }
 
-    private Object getHandler(HttpServletRequest request) {
-        String requestURL = request.getRequestURI();
-        return handlerMappingMap.get(requestURL);
-    }
     private MyView viewResolver(String viewName) {
         return new MyView("/WEB-INF/views/" + viewName + ".jsp");
     }
