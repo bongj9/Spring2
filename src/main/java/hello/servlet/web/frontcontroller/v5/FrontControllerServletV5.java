@@ -52,10 +52,12 @@ public class FrontControllerServletV5 extends HttpServlet {
         if (handler == null){
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
-        } //다형성에 의해서 인스턴스로 받을 수 있다.
+        } //다형성에 의해서 인스턴스로 받을 수 있다// .
+
         MyHandlerAdapter adapter = getHandlerAdapter(handler); //handler를 가져왔음
         ModelView mv = adapter.handle(request, response, handler); //실제 컨ㄷ트롤러를 호출하고 모델뷰를 반
 
+        String viewName = mv.getViewName();
         MyView view = viewResolver(mv.getViewName());
         view.render(mv.getModel(),request,response);
     }
