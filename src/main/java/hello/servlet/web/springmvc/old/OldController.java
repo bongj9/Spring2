@@ -15,5 +15,4 @@ public class OldController implements Controller {
         return new ModelAndView("new-form");
         //web으로 implement해야한다
     }
-
 }
