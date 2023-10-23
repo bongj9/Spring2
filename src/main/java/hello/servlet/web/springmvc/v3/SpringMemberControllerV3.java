@@ -39,7 +39,7 @@ public class SpringMemberControllerV3 {
 */
     @PostMapping("/save") //위에를 짧게 만든것
     public String save(
-            @RequestParam("username") String username,
+            @RequestParam("username") String username, //RequestParam은 매개변수안에 넣기
             @RequestParam("age") int age,
             Model model) {
 
